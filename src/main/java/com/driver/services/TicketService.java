@@ -87,7 +87,7 @@ public class TicketService {
             throw new RuntimeException("Invalid stations");
         }
 
-        // find total no of seats available by substracting from booked seats from total possible seats
+        // find total no of seats available by subtracting from booked seats from total possible seats
         long totalNoOfPossibleSeats = (long) (Math.pow(2, stationList.size() - 1) - 1) * train.getNoOfSeats();
         for(Ticket bookedTicket: train.getBookedTickets()) {
             boolean started = false;
