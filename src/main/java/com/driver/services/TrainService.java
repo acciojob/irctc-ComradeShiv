@@ -187,9 +187,10 @@ public class TrainService {
         List<Integer> availableTrainIds = new ArrayList<>();
         for(Train train: trains) {
             String[] onRouteStationList = train.getRoute().split(",");
-            for(String onRouteStation: onRouteStationList) {
+            for(int i = 0; i < onRouteStationList.length; i++) {
+                String onRouteStation = onRouteStationList[i];
                 if(onRouteStation.equals(station.toString())) {
-                    int departureTime = (train.getDepartureTime().getHour() * 60) + train.getDepartureTime().getMinute();
+                    int departureTime = ((train.getDepartureTime().getHour() + i) * 60) + train.getDepartureTime().getMinute();
                     int startingTime = (startTime.getHour() * 60) + startTime.getMinute();
                     int endingTime = (endTime.getHour() * 60) + endTime.getMinute();
                     if(departureTime >= startingTime && departureTime <= endingTime) {
